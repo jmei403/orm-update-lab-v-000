@@ -56,6 +56,6 @@ class Student
     SELECT * FROM students where name = ? LIMIT 1;
     SQL
 
-    DB[:conn].execute(sql, name).flatten.map { |row| self.new_from_db(row) }
+    DB[:conn].execute(sql, name).map { |row| self.new_from_db(row) }
   end
 end

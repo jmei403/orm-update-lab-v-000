@@ -56,6 +56,7 @@ class Student
     SELECT * FROM students WHERE name = ?;
     SQL
 
-    DB[:conn].execute(sql, name).map { |row| self.new_from_db(row) }
+    result = DB[:conn].execute(sql, name)[0]
+    self.new(result[0], result[1], result[2])
   end
 end

@@ -45,4 +45,9 @@ class Student
     student.save
     student
   end
+
+  def new_from_db(row)
+    new_student = self.new(row[0], row[1], row[2])
+    new_student
+  end
 end

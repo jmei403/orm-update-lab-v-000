@@ -59,4 +59,12 @@ class Student
     result = DB[:conn].execute(sql, name)[0]
     self.new(result[0], result[1], result[2])
   end
+
+  def update
+    sql = <<-SQL
+    UPDATE students SET name = ?, grade = ? WHERE id = ?;
+    SQL
+    
+    DB[:conn].execute(sql, self.name, self.album, self.id)
+  end
 end
